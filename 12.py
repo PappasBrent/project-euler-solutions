@@ -1,22 +1,32 @@
-currentNum=250012
-currentTri=0
-numDivisors=0
+import math
+
+prevX = 0
 
 
+def tri(x):
+    return sum(range(x + 1))
 
-while True:
-    numDivisors=0
-    currentTri+=currentNum
-    currentNum+=1
-    if currentTri % 2 == 0 and currentTri!=1:
-        for i in range(1, int((currentTri+1)/2)):
-            if currentTri % i == 0:
-                numDivisors+=1
+
+def calc_num_divisors(x):
+    if x == 0:
+        return 0
+    if x == 1:
+        return 1
+    numDivisors = 0
+    if x % 2 == 0:
+        for i in range(1, math.ceil(x / 2) + 1):
+            if x % i == 0:
+                numDivisors += 1
     else:
-        continue
-    numDivisors+=1
-    print(currentTri, numDivisors)
-    if numDivisors>250:
-        break
+        for i in range(1, math.ceil(x / 3) + 1, 2):
+            if x % i == 0:
+                numDivisors += 1
+    numDivisors += 1
+    return numDivisors
 
-print(currentTri, numDivisors)
+
+# for i in range(10001):
+#     print(i, calc_num_divisors(i))
+
+for num in range(1, 10000, 15):
+    print(num, tri(num), calc_num_divisors(tri(num)))
