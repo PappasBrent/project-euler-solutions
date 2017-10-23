@@ -1,4 +1,4 @@
-print 'Project Euler Problem 2\n'
+print('Project Euler Problem 2\n')
 
 x = 1
 termVal = 0
@@ -10,11 +10,11 @@ while termVal < 4000000:
         x = 1
     else:
         x = termVal-x
-    print termVal
+    # print(termVal)
     if termVal % 2 == 0:
         total+=termVal
 
-print ''
-print total
+print()
+print(total)
 
-ans = raw_input('Press \'ENTER\' to close')
+ans = input('Press \'ENTER\' to close')
